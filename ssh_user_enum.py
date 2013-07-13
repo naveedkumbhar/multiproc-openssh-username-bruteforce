@@ -66,8 +66,8 @@ for arg in argv:
 		help_out("Help Menu Options:")
 	x += 1
 
-# threading because we shouldn't be slamming the poor box with real parallel work here
-# slam it with bruteforce if you want to do that
+# parallell processing with multiproc because timing on valid users takes forever
+# large lists with invalid users also takes forever
 class check_it(object):
 	def __init__(self,user):
 		self.user = user
