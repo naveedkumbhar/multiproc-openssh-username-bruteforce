@@ -57,10 +57,7 @@ for arg in argv:
 		try:	pool_size = int(argv[x+1])
 		except:	help_out("Error when setting integer value for -procs")
 	if(arg == "-valid"):
-		try:
-			valid = str(argv[x+1])
-			success = open(argv[x+1],"w")
-			success.close()
+		try:	valid = str(argv[x+1])
 		except:	help_out("Error with attempting to open file for writing %s" % e)
 	if(arg == "-h"):
 		help_out("Help Menu Options:")
@@ -119,13 +116,9 @@ class check_it(object):
 		elif(self.timeRes > 20):
 			lock.acquire()
 			print("User: %s exists" % self.user)
-			if(success != ''):
-				try:
-					self.success = open(valid,"a")
-					self.success.write("%s\n" % self.user)
-					self.success.close()
-				except IOError,e:	print(e)
-			else:	print("User: %s not found" % self.user)
+			self.success = open(valid,"a")
+			self.success.write("%s\n" % self.user)
+			self.success.close()
 			lock.release()
 		self.para.close()
 		return 1
